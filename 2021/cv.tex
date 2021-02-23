@@ -1,50 +1,53 @@
 \documentclass{article}
 
-% packages
 \usepackage{multicol}
 \usepackage{color}
+\usepackage[explicit]{titlesec}
+\usepackage{ragged2e}
 
 \setlength{\columnsep}{1cm}
 \setlength{\columnseprule}{1pt}
-\def\columnseprulecolor{\color{black}}
+\def\columnseprulecolor{\color{red}}
+
+\newcommand{\name}[1]{\def\@name{#1}}
+
+\newcommand{\leftsection}[1]{
+  \begin{flushright}
+    \normalfont\Large\bfseries
+    {#1}
+    {\titlerule[0.8pt]}
+  }
+\newcommand{\rightsection}[1]{\begin{flushleft}\section*{#1}}
+
+% format the section names to be underlined
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{#1}[{\titlerule[0.8pt]}]
+
+\name{CHris}
 
 \begin{document}
 
 \begin{multicols}{2}[
-  Christopher Poenaru.
-  Computer Engineer
+  \begin{flushright}
+    {\@name}
+  \end{flushright}
   ]
 
-\section*{Contact}
+\leftsection{Contact}
+Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
-Hello, here is some text without a meaning.  This text should show what
-a printed text will look like at this place.
+\leftsection{Education}
+Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
-\section*{Education}
-
-If you read this text, you will get no information.  Really?  Is there
-no information?  Is there.
-
-\section*{Key Skills}
+\leftsection{Skills}
+Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
 \columnbreak
 
-\section*{Professional Profile}
-
-This will be in a new column, here is some text without a meaning.  This text
-should show what a printed text will look like at this place.
+\rightsection{Profile}
+Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
 \section*{Experience}
+Nullam rutrum.
 
-If you read this text, you will get no information.  Really?  Is there
-no information?  Is there...
-\end{multicols}
-
-
-% contact section
-% education section
-% key skills section
-% professional profile section
-% experience section
 
 \end{document}
