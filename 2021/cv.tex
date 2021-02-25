@@ -1,35 +1,41 @@
 \documentclass{article}
 
+\usepackage{array}
 \usepackage{multicol}
 \usepackage{color}
 \usepackage[explicit]{titlesec}
 \usepackage{ragged2e}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[hidelinks,unicode]{hyperref}
 
 \setlength{\columnsep}{1cm}
 \setlength{\columnseprule}{1pt}
 \def\columnseprulecolor{\color{red}}
 
-\newcommand{\name}[1]{\def\@name{#1}}
+\newcommand{\name}[1]{\def\myName{#1}}
+\newcommand{\tagline}[1]{\def\myTagline{#1}}
 
 \newcommand{\leftsection}[1]{
-  \begin{flushright}
-    \normalfont\Large\bfseries
-    {#1}
-    {\titlerule[0.8pt]}
+    \normalfont\Large\bfseries{#1}\vspace{-10pt}\newline{\hrulefill}\newline
   }
-\newcommand{\rightsection}[1]{\begin{flushleft}\section*{#1}}
+\newcommand{\rightsection}[1]{
+    \normalfont\Large\bfseries\RaggedRight{#1}\vspace{-10pt}\newline{\hrulefill}\newline
+  }
 
 % format the section names to be underlined
 \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{#1}[{\titlerule[0.8pt]}]
 
-\name{CHris}
+\name{Christopher Poenaru}
+\tagline{Computer Engineer}
+
+\geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 
 \begin{document}
-
-\begin{multicols}{2}[
-  \begin{flushright}
-    {\@name}
-  \end{flushright}
+  \begin{multicols}{2}[
+    \RaggedLeft{\myName}
+    \newline
+    \RaggedLeft{\myTagline}
   ]
 
 \leftsection{Contact}
@@ -46,8 +52,9 @@ Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor
 \rightsection{Profile}
 Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
-\section*{Experience}
+\rightsection{Experience}
 Nullam rutrum.
 
+\end{multicols}
 
 \end{document}
