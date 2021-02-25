@@ -12,6 +12,7 @@
 
 \newfontfamily\nameFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
+\newfontfamily\taglineFont[Path=fonts/]{ModerneSans}
 
 \newcommand{\name}[1]{\def\myName{#1}}
 \newcommand{\tagline}[1]{\def\myTagline{#1}}
@@ -27,8 +28,9 @@
 }
 
 \newcommand{\headerNameStyle}[1]{\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}
-\newcommand{\taglineStyle}[1]{\fontsize{18pt}{1em}\MakeUppercase{\taglineFont{#1}}}
+\newcommand{\taglineStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}
 \newcommand{\sectionTitleStyle}[1]{\fontsize{12pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
+\newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
@@ -42,8 +44,10 @@
 
 \newcommand{\mkHeader}{
     \begin{minipage}[t]{\linewidth}
-      \RaggedLeft{\headerNameStyle{\myName}}\\
-      \RaggedLeft{\MakeUppercase\myTagline}
+      \RaggedLeft{
+        \headerNameStyle{\myName}\\
+        \taglineStyle{\myTagline}
+      }
     \end{minipage}
     \vspace{1cm}
 }
@@ -59,31 +63,48 @@
 }
 
 \newcommand{\contactItem}[3]{
-  \item\href{#1}{#2\hspace{10pt}#3}
+  \href{#1}{#2\hspace{10pt}#3}\vspace{10pt}\\
+}
+
+\newcommand{\educationItem}[4]{
+  \subsectionTitleStyle{#1 | #2}\\
+  {#3}\\
+  {#4}\\
+}
+
+\newcommand{\skillsItem}[1]{
+  {#1}\vspace{10pt}\\
+}
+
+\newcommand{\experienceItem}[5]{
+  \subsectionTitleStyle{#1}\\
+  {#2}/{#3}/{#4}\\
+  {#5}\\
 }
 
 \newcommand{\mkLeft}{
   \newcommand{\mkContact}{
     \mkSection[L]{Contact}{
-      \begin{itemize}[label=,itemsep=5pt]
-        \RaggedLeft{
-          \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
-          \contactItem{https://\myWeb}{\myWeb}{\faHome}
-          \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
-          \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
-        }
-      \end{itemize}
+      \RaggedLeft{
+        \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
+        \contactItem{https://\myWeb}{\myWeb}{\faHome}
+        \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
+        \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
+      }
     }
   }
   \newcommand{\mkEducation}{
     \mkSection[L]{Education}{
-      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-    }\\
+      \educationItem{BASc.}{Computer Engineering}{University of Waterloo, Canada}{2011-2016}
+    }
   }
   \newcommand{\mkSkills}{
     \mkSection[L]{Skills}{
-      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-    }\\
+      \skillsItem{Scala}
+      \skillsItem{Go}
+      \skillsItem{AWS}
+      \skillsItem{Postgres}
+    }
   }
   \begin{minipage}[t]{0.3\linewidth}
     {\mkContact}
