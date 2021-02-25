@@ -41,19 +41,28 @@
 
 
 \newcommand{\mkHeader}{
-    \begin{minipage}[c]{\linewidth}
+    \begin{minipage}[t]{\linewidth}
       \RaggedLeft{\headerNameStyle{\myName}}\newline
       \RaggedLeft{\MakeUppercase\myTagline}
     \end{minipage}
-    \vspace{2cm}
+    \vspace{1cm}
+    \newline
+}
+
+\newcommand{\mkBody}{
+    {\mkLeft}
+    {\mkSplit}
+    {\mkRight}
+    \newline
 }
 
 \newcommand{\mkSection}[3][L]{
-  \section[#1]{#2}{#3}\vspace{2cm}
+  \section[#1]{#2}{#3}\vspace{1cm}
+  \newline
 }
 
 \newcommand{\mkLeft}{
-    \begin{minipage}[c]{0.3\linewidth}
+    \begin{minipage}[t]{0.3\linewidth}
       \mkSection[L]{Contact}{
         \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
                 \RaggedLeft
@@ -75,17 +84,8 @@
     \end{minipage}
 }
 
-\newcommand{\mkSplit}{
-    \hspace{0.3cm}
-    \vrule
-    \hspace{0.3cm}
-}
-
-\begin{document}
-    {\mkHeader}
-    {\mkLeft}
-    {\mkSplit}
-    \begin{minipage}[c]{0.6\linewidth}
+\newcommand{\mkRight}{
+    \begin{minipage}[t]{0.6\linewidth}
       \mkSection[R]{Profile}{
         Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
       }
@@ -95,5 +95,15 @@
       }
 
     \end{minipage}
+}
 
+\newcommand{\mkSplit}{
+    \hspace{0.3cm}
+    \vrule
+    \hspace{0.3cm}
+}
+
+\begin{document}
+    {\mkHeader}
+    {\mkBody}
 \end{document}
