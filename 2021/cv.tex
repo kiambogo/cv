@@ -10,7 +10,8 @@
 \usepackage{fontawesome}
 \usepackage{enumitem}
 
-\newfontfamily\nameFont[Path=fonts/]{ModerneSans}
+\newfontfamily\nameFont[Path=fonts/, LetterSpace=10]{ModerneSans}
+\newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 
 \newcommand{\name}[1]{\def\myName{#1}}
 \newcommand{\tagline}[1]{\def\myTagline{#1}}
@@ -21,13 +22,13 @@
 
 \renewcommand{\section}[2][L]{
   \ifthenelse{\equal{#1}{L}}{\RaggedLeft}{\RaggedRight}
-  \normalfont\Large\bfseries
-  {#2}
-  \vspace{-10pt}\newline{\hrulefill}\normalfont\newline
+  \sectionTitleStyle{#2}
+  \vspace{-10pt}\newline{\hrulefill}\newline
 }
 
 \newcommand{\headerNameStyle}[1]{\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}
 \newcommand{\taglineStyle}[1]{\fontsize{18pt}{1em}\MakeUppercase{\taglineFont{#1}}}
+\newcommand{\sectionTitleStyle}[1]{\fontsize{12pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
@@ -38,40 +39,61 @@
 
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 
-\begin{document}
+
+\newcommand{\mkHeader}{
     \begin{minipage}[c]{\linewidth}
       \RaggedLeft{\headerNameStyle{\myName}}\newline
       \RaggedLeft{\MakeUppercase\myTagline}
     \end{minipage}
     \vspace{2cm}
+}
 
+\newcommand{\mkSection}[3][L]{
+  \section[#1]{#2}{#3}\vspace{2cm}
+}
+
+\newcommand{\mkLeft}{
     \begin{minipage}[c]{0.3\linewidth}
-      \section[L]{CONTACT}
-      \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
-              \RaggedLeft
-              \small
-        \item\href{mailto:\myEmail}{\myEmail\hspace{10pt}\faEnvelope}
-        \item\href{https://\myWeb}{\myWeb\hspace{10pt}\faHome}
-        \item\href{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin\hspace{10pt}\faLinkedin}
-        \item\href{https://\myWeb}{\myGithub\hspace{10pt}\faGithub}
-      \end{itemize}
+      \mkSection[L]{Contact}{
+        \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
+                \RaggedLeft
+                \small
+          \item\href{mailto:\myEmail}{\myEmail\hspace{10pt}\faEnvelope}
+          \item\href{https://\myWeb}{\myWeb\hspace{10pt}\faHome}
+          \item\href{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin\hspace{10pt}\faLinkedin}
+          \item\href{https://\myWeb}{\myGithub\hspace{10pt}\faGithub}
+        \end{itemize}
+      }
 
-      \section[L]{EDUCATION}
-      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+      \mkSection[L]{Education}{
+        Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+      }
 
-      \section[L]{SKILLS}
-      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-
+      \mkSection[L]{Skills}{
+        Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+      }
     \end{minipage}
-    \hspace{0.5cm}
-    \vrule
-    \hspace{0.5cm}
-    \begin{minipage}[c]{0.6\linewidth}
-      \section[R]{PROFILE}
-      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+}
 
-      \section[R]{EXPERIENCE}
-      Nullam rutrum.
+\newcommand{\mkSplit}{
+    \hspace{0.3cm}
+    \vrule
+    \hspace{0.3cm}
+}
+
+\begin{document}
+    {\mkHeader}
+    {\mkLeft}
+    {\mkSplit}
+    \begin{minipage}[c]{0.6\linewidth}
+      \mkSection[R]{Profile}{
+        Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+      }
+
+      \mkSection[R]{Experience}{
+        Nullam rutrum.
+      }
+
     \end{minipage}
 
 \end{document}
