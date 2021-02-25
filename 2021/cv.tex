@@ -23,7 +23,7 @@
 \renewcommand{\section}[2][L]{
   \ifthenelse{\equal{#1}{L}}{\RaggedLeft}{\RaggedRight}
   \sectionTitleStyle{#2}
-  \vspace{-10pt}\newline{\hrulefill}\newline
+  \vspace{-10pt}\newline{\hrulefill}\vspace{10pt}\newline
 }
 
 \newcommand{\headerNameStyle}[1]{\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}
@@ -38,7 +38,7 @@
 \github{kiambogo}
 
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
-
+\thispagestyle{empty}
 
 \newcommand{\mkHeader}{
     \begin{minipage}[t]{\linewidth}
@@ -61,40 +61,52 @@
   \newline
 }
 
+
 \newcommand{\mkLeft}{
-    \begin{minipage}[t]{0.3\linewidth}
-      \mkSection[L]{Contact}{
-        \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
-                \RaggedLeft
-                \small
-          \item\href{mailto:\myEmail}{\myEmail\hspace{10pt}\faEnvelope}
-          \item\href{https://\myWeb}{\myWeb\hspace{10pt}\faHome}
-          \item\href{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin\hspace{10pt}\faLinkedin}
-          \item\href{https://\myWeb}{\myGithub\hspace{10pt}\faGithub}
-        \end{itemize}
-      }
-
-      \mkSection[L]{Education}{
-        Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-      }
-
-      \mkSection[L]{Skills}{
-        Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-      }
-    \end{minipage}
+  \newcommand{\mkContact}{
+    \mkSection[L]{Contact}{
+      \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
+              \RaggedLeft
+              \small
+        \item\href{mailto:\myEmail}{\myEmail\hspace{10pt}\faEnvelope}
+        \item\href{https://\myWeb}{\myWeb\hspace{10pt}\faHome}
+        \item\href{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin\hspace{10pt}\faLinkedin}
+        \item\href{https://\myWeb}{\myGithub\hspace{10pt}\faGithub}
+      \end{itemize}
+    } \newline
+  }
+  \newcommand{\mkEducation}{
+    \mkSection[L]{Education}{
+      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+    } \newline
+  }
+  \newcommand{\mkSkills}{
+    \mkSection[L]{Skills}{
+      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+    } \newline
+  }
+  \begin{minipage}[t]{0.3\linewidth}
+    {\mkContact}
+    {\mkEducation}
+    {\mkSkills}
+  \end{minipage}
 }
 
 \newcommand{\mkRight}{
-    \begin{minipage}[t]{0.6\linewidth}
-      \mkSection[R]{Profile}{
-        Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-      }
-
-      \mkSection[R]{Experience}{
-        Nullam rutrum.
-      }
-
-    \end{minipage}
+  \newcommand{\mkProfile}{
+    \mkSection[R]{Profile}{
+      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+    }
+  }
+  \newcommand{\mkExperience}{
+    \mkSection[R]{Experience}{
+      Nullam rutrum.
+    }\newline
+  }
+  \begin{minipage}[t]{0.6\linewidth}
+    {\mkProfile}
+    {\mkExperience}
+  \end{minipage}
 }
 
 \newcommand{\mkSplit}{
