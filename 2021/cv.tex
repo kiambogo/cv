@@ -1,60 +1,75 @@
 \documentclass{article}
 
 \usepackage{array}
-\usepackage{multicol}
-\usepackage{color}
-\usepackage[explicit]{titlesec}
+\usepackage{xcolor}
 \usepackage{ragged2e}
 \usepackage{geometry}
-\usepackage{fancyhdr}
+\usepackage{ifthen}
 \usepackage[hidelinks,unicode]{hyperref}
+\usepackage{fontawesome}
+\usepackage{enumitem}
 
-\setlength{\columnsep}{1cm}
+\setlength{\columnsep}{25pt}
 \setlength{\columnseprule}{1pt}
 \def\columnseprulecolor{\color{red}}
 
 \newcommand{\name}[1]{\def\myName{#1}}
 \newcommand{\tagline}[1]{\def\myTagline{#1}}
+\newcommand{\email}[1]{\def\myEmail{#1}}
+\newcommand{\web}[1]{\def\myWeb{#1}}
+\newcommand{\linkedin}[1]{\def\myLinkedin{#1}}
+\newcommand{\github}[1]{\def\myGithub{#1}}
 
-\newcommand{\leftsection}[1]{
-    \normalfont\Large\bfseries{#1}\vspace{-10pt}\newline{\hrulefill}\newline
-  }
-\newcommand{\rightsection}[1]{
-    \normalfont\Large\bfseries\RaggedRight{#1}\vspace{-10pt}\newline{\hrulefill}\newline
-  }
-
-% format the section names to be underlined
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{#1}[{\titlerule[0.8pt]}]
+\renewcommand{\section}[2][L]{
+  \ifthenelse{\equal{#1}{L}}{\RaggedLeft}{\RaggedRight}
+  \normalfont\Large\bfseries
+  {#2}
+  \vspace{-10pt}\newline{\hrulefill}\normalfont\newline
+}
 
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
+\email{kiambogo@gmail.com}
+\web{chrispoenaru.com}
+\linkedin{chrispoenaru}
+\github{kiambogo}
 
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 
 \begin{document}
-  \begin{multicols}{2}[
-    \RaggedLeft{\myName}
-    \newline
-    \RaggedLeft{\myTagline}
-  ]
+    \begin{minipage}[c]{\linewidth}
+      \RaggedLeft{\myName}\newline
+      \RaggedLeft{\myTagline}
+    \end{minipage}
+    \vspace{2cm}
 
-\leftsection{Contact}
-Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+    \begin{minipage}[c]{0.3\linewidth}
+      \section[L]{CONTACT}
+      \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
+              \RaggedLeft
+              \small
+        \item\href{mailto:\myEmail}{\myEmail\hspace{10pt}\faEnvelope}
+        \item\href{https://\myWeb}{\myWeb\hspace{10pt}\faHome}
+        \item\href{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin\hspace{10pt}\faLinkedin}
+        \item\href{https://\myWeb}{\myGithub\hspace{10pt}\faGithub}
+      \end{itemize}
 
-\leftsection{Education}
-Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+      \section[L]{EDUCATION}
+      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
-\leftsection{Skills}
-Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+      \section[L]{SKILLS}
+      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
-\columnbreak
+    \end{minipage}
+    \hspace{0.5cm}
+    \vrule
+    \hspace{0.5cm}
+    \begin{minipage}[c]{0.6\linewidth}
+      \section[R]{PROFILE}
+      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
 
-\rightsection{Profile}
-Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-
-\rightsection{Experience}
-Nullam rutrum.
-
-\end{multicols}
+      \section[R]{EXPERIENCE}
+      Nullam rutrum.
+    \end{minipage}
 
 \end{document}
