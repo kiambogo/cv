@@ -23,7 +23,7 @@
 \renewcommand{\section}[2][L]{
   \ifthenelse{\equal{#1}{L}}{\RaggedLeft}{\RaggedRight}
   \sectionTitleStyle{#2}
-  \vspace{-10pt}\newline{\hrulefill}\vspace{10pt}\newline
+  \vspace{-5pt}\\{\hrulefill}\vspace{10pt}\\
 }
 
 \newcommand{\headerNameStyle}[1]{\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}
@@ -42,48 +42,48 @@
 
 \newcommand{\mkHeader}{
     \begin{minipage}[t]{\linewidth}
-      \RaggedLeft{\headerNameStyle{\myName}}\newline
+      \RaggedLeft{\headerNameStyle{\myName}}\\
       \RaggedLeft{\MakeUppercase\myTagline}
     \end{minipage}
     \vspace{1cm}
-    \newline
 }
 
 \newcommand{\mkBody}{
     {\mkLeft}
     {\mkSplit}
     {\mkRight}
-    \newline
 }
 
 \newcommand{\mkSection}[3][L]{
   \section[#1]{#2}{#3}\vspace{1cm}
-  \newline
 }
 
+\newcommand{\contactItem}[3]{
+  \item\href{#1}{#2\hspace{10pt}#3}
+}
 
 \newcommand{\mkLeft}{
   \newcommand{\mkContact}{
     \mkSection[L]{Contact}{
-      \begin{itemize}[label=,topsep=8pt,itemsep=4pt,partopsep=4pt, parsep=4pt]
-              \RaggedLeft
-              \small
-        \item\href{mailto:\myEmail}{\myEmail\hspace{10pt}\faEnvelope}
-        \item\href{https://\myWeb}{\myWeb\hspace{10pt}\faHome}
-        \item\href{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin\hspace{10pt}\faLinkedin}
-        \item\href{https://\myWeb}{\myGithub\hspace{10pt}\faGithub}
+      \begin{itemize}[label=,itemsep=5pt]
+        \RaggedLeft{
+          \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
+          \contactItem{https://\myWeb}{\myWeb}{\faHome}
+          \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
+          \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
+        }
       \end{itemize}
-    } \newline
+    }
   }
   \newcommand{\mkEducation}{
     \mkSection[L]{Education}{
       Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-    } \newline
+    }\\
   }
   \newcommand{\mkSkills}{
     \mkSection[L]{Skills}{
       Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-    } \newline
+    }\\
   }
   \begin{minipage}[t]{0.3\linewidth}
     {\mkContact}
@@ -96,12 +96,12 @@
   \newcommand{\mkProfile}{
     \mkSection[R]{Profile}{
       Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
-    }
+    }\\
   }
   \newcommand{\mkExperience}{
     \mkSection[R]{Experience}{
       Nullam rutrum.
-    }\newline
+    }
   }
   \begin{minipage}[t]{0.6\linewidth}
     {\mkProfile}
@@ -116,6 +116,6 @@
 }
 
 \begin{document}
-    {\mkHeader}
-    {\mkBody}
+    {\mkHeader}\\
+    {\mkBody}\\
 \end{document}
