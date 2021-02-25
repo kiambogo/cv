@@ -79,7 +79,7 @@
 \newcommand{\experienceItem}[5]{
   \subsectionTitleStyle{#1}\\
   {#2}/{#3}/{#4}\\
-  {#5}\\
+  {#5}
 }
 
 \newcommand{\mkLeft}{
@@ -101,9 +101,13 @@
   \newcommand{\mkSkills}{
     \mkSection[L]{Skills}{
       \skillsItem{Scala}
+      \skillsItem{Haskell}
+      \skillsItem{Java}
       \skillsItem{Go}
       \skillsItem{AWS}
       \skillsItem{Postgres}
+      \skillsItem{Cassandra}
+      \skillsItem{MongoDB}
     }
   }
   \begin{minipage}[t]{0.3\linewidth}
@@ -121,7 +125,13 @@
   }
   \newcommand{\mkExperience}{
     \mkSection[R]{Experience}{
-      Nullam rutrum.
+      \experienceItem{Platform Engineer Intern}{Strava}{San Francisco, USA}{Aug. 2015 - Dec. 2015}{
+        \begin{itemize}
+          \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
+          \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
+          \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
+        \end{itemize}
+      }
     }
   }
   \begin{minipage}[t]{0.6\linewidth}
