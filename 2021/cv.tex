@@ -5,13 +5,12 @@
 \usepackage{ragged2e}
 \usepackage{geometry}
 \usepackage{ifthen}
+\usepackage[quiet]{fontspec}
 \usepackage[hidelinks,unicode]{hyperref}
 \usepackage{fontawesome}
 \usepackage{enumitem}
 
-\setlength{\columnsep}{25pt}
-\setlength{\columnseprule}{1pt}
-\def\columnseprulecolor{\color{red}}
+\newfontfamily\nameFont[Path=fonts/]{ModerneSans}
 
 \newcommand{\name}[1]{\def\myName{#1}}
 \newcommand{\tagline}[1]{\def\myTagline{#1}}
@@ -27,6 +26,9 @@
   \vspace{-10pt}\newline{\hrulefill}\normalfont\newline
 }
 
+\newcommand{\headerNameStyle}[1]{\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}
+\newcommand{\taglineStyle}[1]{\fontsize{18pt}{1em}\MakeUppercase{\taglineFont{#1}}}
+
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
 \email{kiambogo@gmail.com}
@@ -38,8 +40,8 @@
 
 \begin{document}
     \begin{minipage}[c]{\linewidth}
-      \RaggedLeft{\myName}\newline
-      \RaggedLeft{\myTagline}
+      \RaggedLeft{\headerNameStyle{\myName}}\newline
+      \RaggedLeft{\MakeUppercase\myTagline}
     \end{minipage}
     \vspace{2cm}
 
