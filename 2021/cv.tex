@@ -9,7 +9,9 @@
 \usepackage[hidelinks,unicode]{hyperref}
 \usepackage{fontawesome}
 \usepackage{enumitem}
+\usepackage{graphicx}
 
+\graphicspath{ {imgs/} }
 \newfontfamily\nameFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\taglineFont[Path=fonts/]{ModerneSans}
@@ -83,12 +85,16 @@
   {#1}\vspace{10pt}\\
 }
 
-\newcommand{\experienceItem}[5]{
+\newcommand{\experienceItem}[6]{
   \ifthenelse{\equal{#1}{}}{\vspace{-5pt}}{
-    \subsectionTitleStyle{#1} \hfill {#2}\\
+    \subsectionTitleStyle{#1}
+    \ifthenelse{\equal{#2}{}}{}{
+      \includegraphics[height=15pt]{#2}
+    }
+    \hfill {#3}\\
   }
-  \subsubsectionTitleStyle{#3} \hfill \experienceDateStyle{#4}\\
-  {#5}
+  \subsubsectionTitleStyle{#4} \hfill \experienceDateStyle{#5}\\
+  {#6}
 }
 
 \newcommand{\mkLeft}[1][0.25]{
@@ -134,27 +140,27 @@
   }
   \newcommand{\mkExperience}{
     \mkSection[R]{Experience}{
-      \experienceItem{MasonHub}{Vancouver, Canada (Remote)}{Founding Software Engineer}{Jan. 2019 - Jan. 2021}{
+      \experienceItem{MasonHub}{masonhub.png}{Vancouver, Canada (Remote)}{Founding Software Engineer}{Jan. 2019 - Jan. 2021}{
         \begin{itemize}
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         \end{itemize}
       }
-      \experienceItem{Hudson's Bay Company}{Vancouver, Canada (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
+      \experienceItem{Hudson's Bay Company}{hbc.png}{Vancouver, Canada (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
         \begin{itemize}
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         \end{itemize}
       }
-      \experienceItem{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
+      \experienceItem{}{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
         \begin{itemize}
           \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
         \end{itemize}
       }
-      \experienceItem{}{}{Software Engineer}{July 2016 - Nov. 2017}{
+      \experienceItem{}{}{}{Software Engineer}{July 2016 - Nov. 2017}{
         \begin{itemize}
           \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
         \end{itemize}
       }
-      \experienceItem{Strava}{San Francisco, USA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
+      \experienceItem{Strava}{strava.png}{San Francisco, USA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
         \begin{itemize}
           \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
           \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
