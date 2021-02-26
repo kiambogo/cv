@@ -10,6 +10,7 @@
 \usepackage{fontawesome}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{tikz}
 
 \graphicspath{ {imgs/} }
 \newfontfamily\nameFont[Path=fonts/, LetterSpace=10]{ModerneSans}
@@ -70,7 +71,11 @@
 }
 
 \newcommand{\contactItem}[3]{
-  \href{#1}{#2\hspace{10pt}#3}\vspace{10pt}\\
+  \href{#1}{#2\hspace{2pt}
+  \begin{tikzpicture}
+    {\draw[fill=\myThemeColor!30] (0,0) circle [radius=0.25] node {#3};}
+  \end{tikzpicture}
+  \vspace{10pt}}\\
 }
 
 \newcommand{\educationItem}[5]{
