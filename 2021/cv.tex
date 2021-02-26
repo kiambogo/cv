@@ -14,6 +14,8 @@
 \newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\taglineFont[Path=fonts/]{ModerneSans}
 
+\def\myThemeColor{blue}
+\newcommand{\themeColor}[1]{\def\myThemeColor{#1}}
 \newcommand{\name}[1]{\def\myName{#1}}
 \newcommand{\tagline}[1]{\def\myTagline{#1}}
 \newcommand{\email}[1]{\def\myEmail{#1}}
@@ -27,10 +29,13 @@
   \vspace{-5pt}\\{\hrulefill}\vspace{10pt}\\
 }
 
-\newcommand{\headerNameStyle}[1]{\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}
-\newcommand{\taglineStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}
-\newcommand{\sectionTitleStyle}[1]{\fontsize{12pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
+\newcommand{\headerNameStyle}[1]{{\color{darkgray}\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}}
+\newcommand{\taglineStyle}[1]{{\color{lightgray}\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}}
+\newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
+\newcommand{\subsubsectionTitleStyle}[1]{\fontsize{8pt}{1em}{\sectionTitleFont{#1}}}
+\newcommand{\experienceJobTitleStyle}[1]{\fontsize{8pt}{1em}#1}
+\newcommand{\experienceDateStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
@@ -59,17 +64,19 @@
 }
 
 \newcommand{\mkSection}[3][L]{
-  \section[#1]{#2}{#3}\vspace{1cm}
+  \section[#1]{#2}{#3}\vspace{10pt}
 }
 
 \newcommand{\contactItem}[3]{
   \href{#1}{#2\hspace{10pt}#3}\vspace{10pt}\\
 }
 
-\newcommand{\educationItem}[4]{
-  \subsectionTitleStyle{#1 | #2}\\
+\newcommand{\educationItem}[5]{
+  \subsectionTitleStyle{#1}\\
+  \subsubsectionTitleStyle{#2}\\
   {#3}\\
   {#4}\\
+  {#5}\\
 }
 
 \newcommand{\skillsItem}[1]{
@@ -77,12 +84,14 @@
 }
 
 \newcommand{\experienceItem}[5]{
-  \subsectionTitleStyle{#1} \hfill {#2}\\
-  {#3} \hfill {#4}\\
+  \ifthenelse{\equal{#1}{}}{\vspace{-5pt}}{
+    \subsectionTitleStyle{#1} \hfill {#2}\\
+  }
+  \subsubsectionTitleStyle{#3} \hfill \experienceDateStyle{#4}\\
   {#5}
 }
 
-\newcommand{\mkLeft}{
+\newcommand{\mkLeft}[1][0.25]{
   \newcommand{\mkContact}{
     \mkSection[L]{Contact}{
       \RaggedLeft{
@@ -95,7 +104,7 @@
   }
   \newcommand{\mkEducation}{
     \mkSection[L]{Education}{
-      \educationItem{BASc.}{Computer Engineering}{University of Waterloo, Canada}{2011-2016}
+      \educationItem{BASc.}{Comp. Engineering}{University of Waterloo}{Waterloo, Canada}{2011-2016}
     }
   }
   \newcommand{\mkSkills}{
@@ -110,14 +119,14 @@
       \skillsItem{MongoDB}
     }
   }
-  \begin{minipage}[t]{0.3\linewidth}
+  \begin{minipage}[t]{#1\linewidth}
     {\mkContact}
     {\mkEducation}
     {\mkSkills}
   \end{minipage}
 }
 
-\newcommand{\mkRight}{
+\newcommand{\mkRight}[1][0.75]{
   \newcommand{\mkProfile}{
     \mkSection[R]{Profile}{
       Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
@@ -154,16 +163,16 @@
       }
     }
   }
-  \begin{minipage}[t]{0.6\linewidth}
+  \begin{minipage}[t]{#1\linewidth}
     {\mkProfile}
     {\mkExperience}
   \end{minipage}
 }
 
 \newcommand{\mkSplit}{
-    \hspace{0.3cm}
-    \vrule
-    \hspace{0.3cm}
+    \hspace{5pt}
+    \color{\myThemeColor}\vrule width 1pt
+    \hspace{5pt}
 }
 
 \begin{document}
