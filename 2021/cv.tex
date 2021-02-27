@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{graphbox}
 \usepackage[default,opentype]{sourcesanspro}
 
 \graphicspath{ {imgs/} }
@@ -97,10 +98,10 @@
 
 \newcommand{\experienceItem}[6]{
   \ifthenelse{\equal{#1}{}}{\vspace{-5pt}}{
-    \subsectionTitleStyle{#1}
     \ifthenelse{\equal{#2}{}}{}{
-      \includegraphics[height=15pt]{#2}
+      \includegraphics[align=c,height=15pt]{#2}
     }
+    \subsectionTitleStyle{#1}
     \hfill \experienceLocationStyle{#3}\\
   }
   \experienceJobTitleStyle{#4} \hfill \experienceDateStyle{#5}\\
