@@ -38,14 +38,24 @@
 
 \newcommand{\headerNameStyle}[1]{{\color{darkgray}\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}}
 \newcommand{\taglineStyle}[1]{{\color{lightgray}\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}}
-\newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor!75}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
+\newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 \newcommand{\subsubsectionTitleStyle}[1]{\fontsize{6pt}{1em}{\sectionTitleFont{#1}}}
 \newcommand{\experienceJobTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{gray} #1}}
 \newcommand{\experienceLocationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\experienceDateStyle}[1]{{\fontsize{8pt}{1em}\textit{#1}}}
 
-\themeColor{blue}
+% Color Definitions
+\definecolor{cvOrange}{RGB}{242,74,7}
+\definecolor{cvBlue}{RGB}{7,82,242}
+\definecolor{cvRed}{RGB}{214, 4, 4}
+\definecolor{cvGreen}{RGB}{88,171,5}
+\colorlet{cvDarkOrange}{cvOrange!70!black}
+\colorlet{cvDarkBlue}{cvBlue!70!black}
+\colorlet{cvDarkRed}{cvRed!70!black}
+\colorlet{cvDarkGreen}{cvGreen!70!black}
+
+\themeColor{cvDarkOrange}
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
 \email{kiambogo@gmail.com}
@@ -189,7 +199,7 @@
 
 \newcommand{\mkSplit}{
     \hspace{5pt}
-    \color{\myThemeColor}\vrule width 1pt
+    \color{\myThemeColor!80!black}\vrule width 1pt
     \hspace{5pt}
 }
 
