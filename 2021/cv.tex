@@ -40,10 +40,9 @@
 \newcommand{\taglineStyle}[1]{{\color{lightgray}\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}}
 \newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
-\newcommand{\subsubsectionTitleStyle}[1]{\fontsize{6pt}{1em}{\sectionTitleFont{#1}}}
-\newcommand{\experienceJobTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{gray} #1}}
-\newcommand{\experienceLocationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
-\newcommand{\experienceDateStyle}[1]{{\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{gray} #1}}
+\newcommand{\locationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\datesStyle}[1]{{\fontsize{8pt}{1em}\textit{#1}}}
 
 % Color Definitions
 \definecolor{cvOrange}{RGB}{242,74,7}
@@ -111,11 +110,16 @@
     \ifthenelse{\equal{#2}{}}{}{
       \includegraphics[align=c,height=15pt]{#2}
     }
-    \subsectionTitleStyle{#1}
-    \hfill \experienceLocationStyle{#3}\\
+    \subsectionTitleStyle{#1} \hfill \locationStyle{#3}\\
   }
-  \experienceJobTitleStyle{#4} \hfill \experienceDateStyle{#5}\\
+  \subsubsectionTitleStyle{#4} \hfill \datesStyle{#5}\\
   {#6}
+}
+
+\newcommand{\projectItem}[5]{
+  \subsectionTitleStyle{#1} \hfill \locationStyle{#2}\\
+  \subsubsectionTitleStyle{#3} \hfill \datesStyle{#4}\\
+  {#5}
 }
 
 \newcommand{\mkLeft}[1][0.25]{
@@ -155,9 +159,14 @@
 }
 
 \newcommand{\mkRight}[1][0.75]{
-  \newcommand{\mkProfile}{
-    \mkSection[R]{Profile}{
-      Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.
+  \newcommand{\mkProjects}{
+    \mkSection[R]{Projects}{
+      \projectItem{Scrava}{Remote}{Personal Project \hspace{3pt} \href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{Sept. 2014 - PRESENT}{
+        \begin{itemize}
+          \item {Community recognized open-source Scala client for the Strava API}
+          \item {Actively maintained and updated to reflect live API}
+        \end{itemize}
+      }
     }\\
   }
   \newcommand{\mkExperience}{
@@ -192,8 +201,8 @@
     }
   }
   \begin{minipage}[t]{#1\linewidth}
-    {\mkProfile}
     {\mkExperience}
+    {\mkProjects}
   \end{minipage}
 }
 
