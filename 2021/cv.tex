@@ -11,7 +11,6 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric}
 \usepackage{graphbox}
 \usepackage[default,opentype]{sourcesanspro}
 
@@ -90,8 +89,8 @@
 \newcommand{\contactItem}[3]{
   \bodyStyle{\href{#1}{#2
       \raisebox{-4pt}{
-        \begin{tikzpicture}[square/.style={regular polygon,regular polygon sides=4}]
-          \node at (0,0) [square,inner sep=0.01pt,draw,fill=\myThemeColor!30] {#3};
+        \begin{tikzpicture}
+          \node at (0,0) [draw,fill=\myThemeColor!30] {#3};
         \end{tikzpicture}
       }
     }
