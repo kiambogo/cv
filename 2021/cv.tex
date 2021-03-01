@@ -11,6 +11,7 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
 \usepackage{graphbox}
 \usepackage[default,opentype]{sourcesanspro}
 
@@ -87,11 +88,15 @@
 }
 
 \newcommand{\contactItem}[3]{
-  \href{#1}{#2\hspace{2pt}
-  \begin{tikzpicture}
-    {\draw[fill=\myThemeColor!30] (0,0) circle [radius=0.25] node {#3};}
-  \end{tikzpicture}
-  \vspace{10pt}}\\
+  \bodyStyle{\href{#1}{#2
+      \raisebox{-4pt}{
+        \begin{tikzpicture}[square/.style={regular polygon,regular polygon sides=4}]
+          \node at (0,0) [square,inner sep=0.01pt,draw,fill=\myThemeColor!30] {#3};
+        \end{tikzpicture}
+      }
+    }
+    \hspace{-7pt}
+    \vspace{6pt}}\\
 }
 
 \newcommand{\skillsItem}[1]{
@@ -115,7 +120,7 @@
   }
   \vspace{3pt}
   \subsubsectionTitleStyle{#4} \hfill \datesStyle{#5}\\
-  \bodyStyle{#6}
+  {#6}
 }
 
 % a list residing within a cvEntry
