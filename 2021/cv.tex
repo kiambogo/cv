@@ -40,7 +40,7 @@
 \newcommand{\taglineStyle}[1]{{\color{lightgray}\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}}
 \newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
-\newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{gray} #1}}
+\newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
 \newcommand{\locationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\datesStyle}[1]{{\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
@@ -55,7 +55,7 @@
 \colorlet{cvDarkRed}{cvRed!70!black}
 \colorlet{cvDarkGreen}{cvGreen!70!black}
 
-\themeColor{cvDarkOrange}
+\themeColor{cvGreen}
 \name{Christopher Poenaru}
 \tagline{Computer Engineer}
 \email{kiambogo@gmail.com}
@@ -113,6 +113,7 @@
     }
     \subsectionTitleStyle{#1} \hfill \locationStyle{#3}\\
   }
+  \vspace{3pt}
   \subsubsectionTitleStyle{#4} \hfill \datesStyle{#5}\\
   \bodyStyle{#6}
 }
@@ -182,6 +183,7 @@
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
+      \vspace{10pt}
       \cvEntry{Hudson's Bay Company}{hbc.png}{Vancouver, Canada (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
@@ -197,6 +199,7 @@
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
+      \vspace{10pt}
       \cvEntry{Strava}{strava.png}{San Francisco, USA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
         \entryItems{
           \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
@@ -204,6 +207,7 @@
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
+      \vspace{10pt}
       \cvEntry{Gilt Groupe}{gilt.png}{New York City, USA}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
         \entryItems{
         \item {Designed and built a public API with Scala + Play as part of the global redistribution team to provide inventory and catalog information to redistribution partners, increasing global incremental revenue by more than 40\%}
