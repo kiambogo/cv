@@ -42,7 +42,7 @@
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 \newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
 \newcommand{\locationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
-\newcommand{\datesStyle}[1]{{\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\datesStyle}[1]{{\color{lightgray}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
 % Color Definitions
@@ -83,7 +83,7 @@
 }
 
 \newcommand{\mkSection}[3][L]{
-  \section[#1]{#2}{#3}\vspace{10pt}
+  \section[#1]{#2}\vspace{-3pt}{#3}\vspace{10pt}
 }
 
 \newcommand{\contactItem}[3]{
@@ -113,7 +113,7 @@
 \newcommand{\cvEntry}[6]{
   \ifthenelse{\equal{#1}{}}{\vspace{-5pt}}{
     \ifthenelse{\equal{#2}{}}{}{
-      \includegraphics[align=c,height=15pt]{#2}
+      \includegraphics[align=c,width=16pt,height=16pt,keepaspectratio]{#2}
     }
     \subsectionTitleStyle{#1} \hfill \locationStyle{#3}\\
   }
