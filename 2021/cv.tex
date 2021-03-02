@@ -42,7 +42,7 @@
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 \newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
 \newcommand{\locationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
-\newcommand{\datesStyle}[1]{{\color{lightgray}\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\datesStyle}[1]{{\color{darkgray}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
 % Color Definitions
@@ -105,21 +105,17 @@
 % an entry within a section
 % args:
 % #1: optional title (leave blank for nesting entries) [company A]
-% #2: optional logo [a.jpg]
-% #3: location [vancouver]
-% #4: subtitle [software engineer]
-% #5: date(s) of entry [Jan. 2019 - PRESENT]
-% #6: body
-\newcommand{\cvEntry}[6]{
+% #2: location [vancouver]
+% #3: subtitle [software engineer]
+% #4: date(s) of entry [Jan. 2019 - PRESENT]
+% #5: body
+\newcommand{\cvEntry}[5]{
   \ifthenelse{\equal{#1}{}}{\vspace{-5pt}}{
-    \ifthenelse{\equal{#2}{}}{}{
-      \includegraphics[align=c,width=16pt,height=16pt,keepaspectratio]{#2}
-    }
-    \subsectionTitleStyle{#1} \hfill \locationStyle{#3}\\
+    \subsectionTitleStyle{#1} \hfill \locationStyle{#2}\\
   }
   \vspace{3pt}
-  \subsubsectionTitleStyle{#4} \hfill \datesStyle{#5}\\
-  {#6}
+  \subsubsectionTitleStyle{#3} \hfill \datesStyle{#4}\\
+  {#5}
 }
 
 % a list residing within a cvEntry
@@ -159,7 +155,7 @@
   }
   \newcommand{\mkEducation}{
     \mkSection[L]{Education}{
-      \cvEntry{BASc.}{}{Comp. Engineering}{University of Waterloo}{2011-2016}{}{}
+      \cvEntry{BASc.}{Comp. Engineering}{University of Waterloo}{2011-2016}{}{}
     }
   }
   \begin{minipage}[t]{#1\linewidth}
@@ -172,7 +168,7 @@
 \newcommand{\mkRight}[1][0.75]{
   \newcommand{\mkProjects}{
     \mkSection[R]{Projects}{
-      \cvEntry{Scrava}{}{Remote}{Personal Project \hspace{3pt} \href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{Sept. 2014 - PRESENT}{
+      \cvEntry{Scrava}{Remote}{Personal Project \hspace{3pt} \href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{Sept. 2014 - PRESENT}{
         \begin{itemize}
           \item {Community recognized open-source Scala client for the Strava API}
           \item {Actively maintained and updated to reflect live API}
@@ -182,29 +178,29 @@
   }
   \newcommand{\mkExperience}{
     \mkSection[R]{Experience}{
-      \cvEntry{MasonHub}{masonhub.png}{Vancouver, Canada (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
+      \cvEntry{MasonHub}{Vancouver, Canada (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
       \vspace{10pt}
-      \cvEntry{Hudson's Bay Company}{hbc.png}{Vancouver, Canada (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
+      \cvEntry{Hudson's Bay Company}{Vancouver, Canada (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
-      \cvEntry{}{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
+      \cvEntry{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
-      \cvEntry{}{}{}{Software Engineer}{July 2016 - Nov. 2017}{
+      \cvEntry{}{}{Software Engineer}{July 2016 - Nov. 2017}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
       \vspace{10pt}
-      \cvEntry{Strava}{strava.png}{San Francisco, USA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
+      \cvEntry{Strava}{San Francisco, USA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
         \entryItems{
           \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
           \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
@@ -212,7 +208,7 @@
         }
       }
       \vspace{10pt}
-      \cvEntry{Gilt Groupe}{gilt.png}{New York City, USA}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
+      \cvEntry{Gilt Groupe}{New York City, USA}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
         \entryItems{
         \item {Designed and built a public API with Scala + Play as part of the global redistribution team to provide inventory and catalog information to redistribution partners, increasing global incremental revenue by more than 40\%}
         \item {Integrated existing Scala services with the warehouse management system using Apache Camel and RabbitMQ}
