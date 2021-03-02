@@ -78,16 +78,9 @@
     \vspace{1cm}
 }
 
-\newcommand{\mkBody}{
-    {\mkLeft}
-    {\mkSplit}
-    {\mkRight}
+\newcommand{\mkSection}[2]{
+  \section[R]{#1}\vspace{-3pt}{#2}\vspace{10pt}
 }
-
-\newcommand{\mkSection}[3][L]{
-  \section[#1]{#2}\vspace{-3pt}{#3}\vspace{10pt}
-}
-
 
 \newcommand{\contactItem}[3]{
   \hspace{-11pt}
@@ -102,7 +95,7 @@
 }
 
 \newcommand{\skillsItem}[1]{
-  {#1}\vspace{5pt}\\
+  \bodyStyle{#1}\vspace{5pt}\\
 }
 
 % an entry within a section
@@ -132,50 +125,52 @@
   }
 }
 
-  \newcommand{\mkProjects}{
-    \mkSection[R]{Projects}{
-      \cvEntry{Scrava}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
-        \entryItems{
-          \item{Community recognized, open-source Scala client for the Strava API}
-        }
+\newcommand{\mkProjects}{
+  \mkSection{Projects}{
+    \cvEntry{Scrava}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
+      \entryItems{
+        \item{Community recognized, open-source Scala client for the Strava API}
       }
-      \vspace{5pt}
-      \cvEntry{Road Quality}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
-        \entryItems{
-          \item{Community recognized, open-source Scala client for the Strava API}
-        }
+    }
+    \vspace{5pt}
+    \cvEntry{Road Quality}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
+      \entryItems{
+        \item{Community recognized, open-source Scala client for the Strava API}
       }
     }
   }
+}
 
-  \newcommand{\mkEducation}{
-    \mkSection[R]{Education}{
-      \cvEntry{University of Waterloo}{Waterloo, Canada}{BASc. Computer Engineering}{2011-2016}{}{}
-    }
+\newcommand{\mkEducation}{
+  \mkSection{Education}{
+    \cvEntry{University of Waterloo}{Waterloo, Canada}{BASc. Computer Engineering}{2011-2016}{}{}
   }
+}
+
+\newcommand{\mkContact}{
+  \mkSection{Contact}{
+    \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
+    \contactItem{https://\myWeb}{\myWeb}{\faHome}
+    \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
+    \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
+  }
+}
+
+\newcommand{\mkSkills}{
+  \mkSection{Skills}{
+    \skillsItem{Scala}
+    \skillsItem{Go}
+    \skillsItem{Java}
+    \skillsItem{Haskell}
+    \skillsItem{AWS}
+    \skillsItem{Postgres}
+    \skillsItem{Redis}
+    \skillsItem{Cassandra}
+    \skillsItem{MongoDB}
+  }
+}
 
 \newcommand{\mkLeft}[1][0.25]{
-  \newcommand{\mkContact}{
-    \mkSection[R]{Contact}{
-        \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
-        \contactItem{https://\myWeb}{\myWeb}{\faHome}
-        \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
-        \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
-    }
-  }
-  \newcommand{\mkSkills}{
-    \mkSection[R]{Skills}{
-      \skillsItem{Scala}
-      \skillsItem{Go}
-      \skillsItem{Java}
-      \skillsItem{Haskell}
-      \skillsItem{AWS}
-      \skillsItem{Postgres}
-      \skillsItem{Redis}
-      \skillsItem{Cassandra}
-      \skillsItem{MongoDB}
-    }
-  }
   \begin{minipage}[t]{#1\linewidth}
     {\mkSkills}
     {\mkProjects}
@@ -183,48 +178,49 @@
   \end{minipage}
 }
 
-\newcommand{\mkRight}[1][0.75]{
-  \newcommand{\mkExperience}{
-    \mkSection[R]{Experience}{
-      \cvEntry{MasonHub}{Los Angeles, CA (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
-        \entryItems{
-          \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
-        }
+\newcommand{\mkExperience}{
+  \mkSection{Experience}{
+    \cvEntry{MasonHub}{Los Angeles, CA (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
+      \entryItems{
+        \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
       }
-      \vspace{10pt}
-      \cvEntry{Hudson's Bay Company}{New York, NY (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
-        \entryItems{
-          \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
-        }
+    }
+    \vspace{10pt}
+    \cvEntry{Hudson's Bay Company}{New York, NY (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
+      \entryItems{
+        \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
       }
-      \cvEntry{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
-        \entryItems{
-          \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
-        }
+    }
+    \cvEntry{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
+      \entryItems{
+        \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
       }
-      \cvEntry{}{}{Software Engineer}{July 2016 - Nov. 2017}{
-        \entryItems{
-          \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
-        }
+    }
+    \cvEntry{}{}{Software Engineer}{July 2016 - Nov. 2017}{
+      \entryItems{
+        \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
       }
-      \vspace{10pt}
-      \cvEntry{Strava}{San Francisco, CA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
-        \entryItems{
-          \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
-          \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
-          \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
-        }
+    }
+    \vspace{10pt}
+    \cvEntry{Strava}{San Francisco, CA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
+      \entryItems{
+        \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
+        \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
+        \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
       }
-      \vspace{10pt}
-      \cvEntry{Gilt Groupe}{New York, NY}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
-        \entryItems{
+    }
+    \vspace{10pt}
+    \cvEntry{Gilt Groupe}{New York, NY}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
+      \entryItems{
         \item {Designed and built a public API with Scala + Play as part of the global redistribution team to provide inventory and catalog information to redistribution partners, increasing global incremental revenue by more than 40\%}
         \item {Integrated existing Scala services with the warehouse management system using Apache Camel and RabbitMQ}
         \item {Aided in migration process to AWS + Docker infrastructure}
-        }
       }
     }
   }
+}
+
+\newcommand{\mkRight}[1][0.75]{
   \begin{minipage}[t]{#1\linewidth}
     {\mkExperience}
     {\mkEducation}
@@ -239,5 +235,7 @@
 
 \begin{document}
     {\mkHeader}\\
-    {\mkBody}\\
+    {\mkLeft}
+    {\mkSplit}
+    {\mkRight}
 \end{document}
