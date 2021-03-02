@@ -41,7 +41,7 @@
 \newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
 \newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
 \newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
-\newcommand{\locationStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\locationStyle}[1]{{\color{\myThemeColor}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\datesStyle}[1]{{\color{darkgray}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
@@ -55,7 +55,7 @@
 \colorlet{cvDarkRed}{cvRed!70!black}
 \colorlet{cvDarkGreen}{cvGreen!70!black}
 
-\themeColor{cvGreen}
+\themeColor{cvBlue}
 \name{Christopher Poenaru}
 \tagline{Computer Engineer - Functional Programmer - Rock Climber - Triathlete}
 \email{kiambogo@gmail.com}
@@ -98,7 +98,7 @@
 }
 
 \newcommand{\skillsItem}[1]{
-  {#1}\vspace{10pt}\\
+  {#1}\vspace{5pt}\\
 }
 
 % an entry within a section
@@ -128,6 +128,28 @@
   }
 }
 
+  \newcommand{\mkProjects}{
+    \mkSection[R]{Projects}{
+      \cvEntry{Scrava}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
+        \entryItems{
+          \item{Community recognized, open-source Scala client for the Strava API}
+        }
+      }
+      \vspace{5pt}
+      \cvEntry{Road Quality}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
+        \entryItems{
+          \item{Community recognized, open-source Scala client for the Strava API}
+        }
+      }
+    }
+  }
+
+  \newcommand{\mkEducation}{
+    \mkSection[R]{Education}{
+      \cvEntry{University of Waterloo}{Waterloo, Canada}{BASc. Computer Engineering}{2011-2016}{}{}
+    }
+  }
+
 \newcommand{\mkLeft}[1][0.25]{
   \newcommand{\mkContact}{
     \mkSection[R]{Contact}{
@@ -150,38 +172,23 @@
       \skillsItem{MongoDB}
     }
   }
-  \newcommand{\mkEducation}{
-    \mkSection[R]{Education}{
-      \cvEntry{BASc.}{Comp. Engineering}{University of Waterloo}{2011-2016}{}{}
-    }
-  }
   \begin{minipage}[t]{#1\linewidth}
-    {\mkContact}
     {\mkSkills}
-    {\mkEducation}
+    {\mkProjects}
+    {\mkContact}
   \end{minipage}
 }
 
 \newcommand{\mkRight}[1][0.75]{
-  \newcommand{\mkProjects}{
-    \mkSection[R]{Projects}{
-      \cvEntry{Scrava}{Remote}{Personal Project \hspace{3pt} \href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{Sept. 2014 - PRESENT}{
-        \begin{itemize}
-          \item {Community recognized open-source Scala client for the Strava API}
-          \item {Actively maintained and updated to reflect live API}
-        \end{itemize}
-      }
-    }
-  }
   \newcommand{\mkExperience}{
     \mkSection[R]{Experience}{
-      \cvEntry{MasonHub}{Vancouver, Canada (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
+      \cvEntry{MasonHub}{Los Angeles, CA (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
       }
       \vspace{10pt}
-      \cvEntry{Hudson's Bay Company}{Vancouver, Canada (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
+      \cvEntry{Hudson's Bay Company}{New York, NY (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
         \entryItems{
           \item{Scaffolded machine-learning service to classify and mitigate spam posted throughout the site}
         }
@@ -197,7 +204,7 @@
         }
       }
       \vspace{10pt}
-      \cvEntry{Strava}{San Francisco, USA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
+      \cvEntry{Strava}{San Francisco, CA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
         \entryItems{
           \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
           \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
@@ -205,7 +212,7 @@
         }
       }
       \vspace{10pt}
-      \cvEntry{Gilt Groupe}{New York City, USA}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
+      \cvEntry{Gilt Groupe}{New York, NY}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
         \entryItems{
         \item {Designed and built a public API with Scala + Play as part of the global redistribution team to provide inventory and catalog information to redistribution partners, increasing global incremental revenue by more than 40\%}
         \item {Integrated existing Scala services with the warehouse management system using Apache Camel and RabbitMQ}
@@ -216,7 +223,7 @@
   }
   \begin{minipage}[t]{#1\linewidth}
     {\mkExperience}
-    {\mkProjects}
+    {\mkEducation}
   \end{minipage}
 }
 
