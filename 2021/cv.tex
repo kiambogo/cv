@@ -19,6 +19,7 @@
 \newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\taglineFont[Path=fonts/]{ModerneSans}
 \newfontfamily\monoFont[Path=fonts/]{SpaceMono}
+
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
 
@@ -38,12 +39,12 @@
 }
 
 \newcommand{\headerNameStyle}[1]{{\color{darkgray}\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}}
-\newcommand{\taglineStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\MakeUppercase{\taglineFont{#1}}}}
+\newcommand{\taglineStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\MakeUppercase{\bodyfont{#1}}}}
 \newcommand{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
-\newcommand{\subsectionTitleStyle}[1]{\fontsize{8pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}
+\newcommand{\subsectionTitleStyle}[1]{{\color{darkgray}\fontsize{9pt}{1em}{\textbf{\MakeUppercase{\bodyfont{#1}}}}}}
 \newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
-\newcommand{\locationStyle}[1]{{\color{\myThemeColor}\fontsize{8pt}{1em}\textit{#1}}}
-\newcommand{\datesStyle}[1]{{\color{darkgray}\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\locationStyle}[1]{{\color{\myThemeColor}\fontsize{8pt}{1em}\bodyfontlight\textit{#1}}}
+\newcommand{\datesStyle}[1]{{\color{darkgray}\fontsize{8pt}{1em}\bodyfontlight\textit{#1}}}
 \newcommand{\contactStyle}[1]{{\fontsize{8pt}{1em}\color{darkgray}\monoFont{#1}}}
 \newcommand{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
@@ -59,7 +60,7 @@
 
 \themeColor{cvBlue}
 \name{Christopher Poenaru}
-\tagline{Computer Engineer - Functional Programmer - Rock Climber - Triathlete}
+\tagline{Computer Engineer {\hspace{5pt}--\hspace{5pt}}  Functional Programmer {\hspace{5pt}--\hspace{5pt}} Triathlete {\hspace{5pt}--\hspace{5pt}} Rock Climber}
 \email{kiambogo@gmail.com}
 \web{chrispoenaru.com}
 \linkedin{chrispoenaru}
@@ -133,7 +134,7 @@
       }
     }
     \vspace{5pt}
-    \cvEntry{Road Quality}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
+    \cvEntry{Road Quality}{}{\href{https://github.com/trifectalabs/roadquality}{\faGithubSquare \hspace{0.5mm} trifectalabs/roadquality}}{}{
       \entryItems{
         \item{Crowdsourced road quality and traffic safety data for cyclists}
         \item{Allows cyclists to rate sections of a road or path to build a
