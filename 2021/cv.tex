@@ -18,6 +18,7 @@
 \newfontfamily\nameFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\taglineFont[Path=fonts/]{ModerneSans}
+\newfontfamily\monoFont[Path=fonts/]{SpaceMono}
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
 
@@ -43,6 +44,7 @@
 \newcommand{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
 \newcommand{\locationStyle}[1]{{\color{\myThemeColor}\fontsize{8pt}{1em}\textit{#1}}}
 \newcommand{\datesStyle}[1]{{\color{darkgray}\fontsize{8pt}{1em}\textit{#1}}}
+\newcommand{\contactStyle}[1]{{\fontsize{8pt}{1em}\color{darkgray}\monoFont{#1}}}
 \newcommand{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
 % Color Definitions
@@ -86,15 +88,17 @@
   \section[#1]{#2}\vspace{-3pt}{#3}\vspace{10pt}
 }
 
+
 \newcommand{\contactItem}[3]{
-  \bodyStyle{\href{#1}{
-      \raisebox{-4pt}{
+  \hspace{-11pt}
+  \contactStyle{
+    \href{#1}{\raisebox{-3.5pt}{
         \begin{tikzpicture}
-          \node at (0,0) [draw,fill=\myThemeColor!30] {#3};
+          \node at (0,0) [draw,fill=\myThemeColor!30] {\fontsize{9pt}{1em}{#3}};
         \end{tikzpicture}
-      }
-    #2}
-    \vspace{6pt}}\\
+      } \hspace{-10pt} #2}
+    \vspace{6pt}
+  }\\
 }
 
 \newcommand{\skillsItem}[1]{
