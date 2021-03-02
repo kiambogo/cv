@@ -87,14 +87,13 @@
 }
 
 \newcommand{\contactItem}[3]{
-  \bodyStyle{\href{#1}{#2
+  \bodyStyle{\href{#1}{
       \raisebox{-4pt}{
         \begin{tikzpicture}
           \node at (0,0) [draw,fill=\myThemeColor!30] {#3};
         \end{tikzpicture}
       }
-    }
-    \hspace{-7pt}
+    #2}
     \vspace{6pt}}\\
 }
 
@@ -131,17 +130,15 @@
 
 \newcommand{\mkLeft}[1][0.25]{
   \newcommand{\mkContact}{
-    \mkSection[L]{Contact}{
-      \RaggedLeft{
+    \mkSection[R]{Contact}{
         \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
         \contactItem{https://\myWeb}{\myWeb}{\faHome}
         \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
         \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
-      }
     }
   }
   \newcommand{\mkSkills}{
-    \mkSection[L]{Skills}{
+    \mkSection[R]{Skills}{
       \skillsItem{Scala}
       \skillsItem{Go}
       \skillsItem{Java}
@@ -154,7 +151,7 @@
     }
   }
   \newcommand{\mkEducation}{
-    \mkSection[L]{Education}{
+    \mkSection[R]{Education}{
       \cvEntry{BASc.}{Comp. Engineering}{University of Waterloo}{2011-2016}{}{}
     }
   }
