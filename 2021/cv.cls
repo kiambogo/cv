@@ -11,65 +11,57 @@
 \RequirePackage{ragged2e}
 \RequirePackage{geometry}
 \RequirePackage{ifthen}
-\RequirePackage[quiet]{fontspec}
 \RequirePackage[hidelinks,unicode]{hyperref}
 \RequirePackage{fontawesome}
 \RequirePackage{enumitem}
-\RequirePackage{graphicx}
 \RequirePackage{tikz}
-\RequirePackage{graphbox}
 \RequirePackage[default,opentype]{sourcesanspro}
-\RequirePackage{import}
 
 % Layout setup
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 \thispagestyle{empty}
+\setlength{\parindent}{0pt}
 
 % Font setup
-\graphicspath{ {imgs/} }
 \newfontfamily\nameFont[Path=fonts/, LetterSpace=10]{ModerneSans}
 \newfontfamily\sectionTitleFont[Path=fonts/, LetterSpace=10]{ModerneSans}
-\newfontfamily\taglineFont[Path=fonts/]{ModerneSans}
 \newfontfamily\monoFont[Path=fonts/]{SpaceMono}
-
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
 
 % Colour definitions
-\definecolor{cvOrange}{RGB}{242,74,7}
 \definecolor{cvBlue}{RGB}{7,82,242}
 \definecolor{cvRed}{RGB}{214, 4, 4}
 \definecolor{cvGreen}{RGB}{88,171,5}
-\colorlet{cvDarkOrange}{cvOrange!70!black}
 \colorlet{cvDarkBlue}{cvBlue!70!black}
 \colorlet{cvDarkRed}{cvRed!70!black}
 \colorlet{cvDarkGreen}{cvGreen!70!black}
 
-\def\myThemeColor{blue}
-\newcommand*{\themeColor}[1]{\def\myThemeColor{#1}}
-\newcommand*{\name}[1]{\def\myName{#1}}
-\newcommand*{\tagline}[1]{\def\myTagline{#1}}
-\newcommand*{\email}[1]{\def\myEmail{#1}}
-\newcommand*{\web}[1]{\def\myWeb{#1}}
-\newcommand*{\linkedin}[1]{\def\myLinkedin{#1}}
-\newcommand*{\github}[1]{\def\myGithub{#1}}
-
+% Configuration commands
+\def\cvThemeColor{blue}
+\newcommand*{\themeColor}[1]{\def\cvThemeColor{#1}}
+\newcommand*{\name}[1]{\def\cvName{#1}}
+\newcommand*{\tagline}[1]{\def\cvTagline{#1}}
+\newcommand*{\email}[1]{\def\cvEmail{#1}}
+\newcommand*{\web}[1]{\def\cvWeb{#1}}
+\newcommand*{\linkedin}[1]{\def\cvLinkedin{#1}}
+\newcommand*{\github}[1]{\def\cvGithub{#1}}
 \newcommand*{\skills}[1]{\def\cvSkills{#1}}
 \newcommand*{\projects}[1]{\def\cvProjects{#1}}
 \newcommand*{\contact}[1]{\def\cvContact{#1}}
 \newcommand*{\experience}[1]{\def\cvExperience{#1}}
 \newcommand*{\education}[1]{\def\cvEducation{#1}}
 
+% Style commands
 \newcommand*{\headerNameStyle}[1]{{\color{darkgray}\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}}
-\newcommand*{\taglineStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\MakeUppercase{\bodyfont{#1}}}}
-\newcommand*{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
+\newcommand*{\taglineStyle}[1]{{\color{\cvThemeColor!75}\fontsize{8pt}{1em}\MakeUppercase{\bodyfont{#1}}}}
+\newcommand*{\sectionTitleStyle}[1]{{\color{\cvThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
 \newcommand*{\subsectionTitleStyle}[1]{{\color{darkgray}\fontsize{9pt}{1em}{\textbf{\MakeUppercase{\bodyfont{#1}}}}}}
 \newcommand*{\subsubsectionTitleStyle}[1]{{\fontsize{8pt}{1em}\bodyfont\textbf{\scshape\color{gray} #1}}}
-\newcommand*{\locationStyle}[1]{{\color{\myThemeColor}\fontsize{8pt}{1em}\bodyfontlight\textit{#1}}}
+\newcommand*{\locationStyle}[1]{{\color{\cvThemeColor}\fontsize{8pt}{1em}\bodyfontlight\textit{#1}}}
 \newcommand*{\datesStyle}[1]{{\color{darkgray}\fontsize{8pt}{1em}\bodyfontlight\textit{#1}}}
 \newcommand*{\contactStyle}[1]{{\fontsize{8pt}{1em}\color{darkgray}\monoFont{#1}}}
 \newcommand*{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
-
 
 % a section within the cv (skills/education/experience/etc)
 % args:
@@ -96,7 +88,7 @@
   \contactStyle{
     \href{#1}{\raisebox{-3.5pt}{
         \begin{tikzpicture}
-          \node at (0,0) [draw,fill=\myThemeColor!30] {\fontsize{9pt}{1em}{#3}};
+          \node at (0,0) [draw,fill=\cvThemeColor!30] {\fontsize{9pt}{1em}{#3}};
         \end{tikzpicture}
       } \hspace{-10pt} #2}
     \vspace{6pt}
@@ -138,16 +130,24 @@
   }
 }
 
+% constructs the contact section based on the defined contact items
+\newcommand{\mkContact}{
+  \ifthenelse{\equal{\cvEmail}{}}{}{\contactItem{mailto:\cvEmail}{\cvEmail}{\faEnvelope}}
+  \ifthenelse{\equal{\cvWeb}{}}{}{\contactItem{https://\cvWeb}{\cvWeb}{\faHome}}
+  \ifthenelse{\equal{\cvLinkedin}{}}{}{\contactItem{https://www.linkedin.com/in/\cvLinkedin}{\cvLinkedin}{\faLinkedin}}
+  \ifthenelse{\equal{\cvGithub}{}}{}{\contactItem{https://github.com/\cvGithub}{\cvGithub}{\faGithub}}
+}
+
 % mkHeader will construct the header of the document
 % this includes the name and the tagline
 \newcommand*{\mkHeader}{
     \begin{minipage}[t]{\linewidth}
       \RaggedLeft{
-        \headerNameStyle{\myName}\\
-        \taglineStyle{\myTagline}
+        \headerNameStyle{\cvName}\\
+        \taglineStyle{\cvTagline}
       }
     \end{minipage}
-    \vspace{30pt}
+    \vspace{25pt}
 }
 
 % mkBody constructs the body of the cv
@@ -157,12 +157,12 @@
     \begin{minipage}[t]{0.25\linewidth}
       \mkSection{Skills}{{\cvSkills}}
       \mkSection{Projects}{{\cvProjects}}
-      \mkSection{Contact}{{\cvContact}}
+      \mkSection{Contact}{{\mkContact}}
     \end{minipage}
   }
   \newcommand{\mkSplit}{
     \hspace{5pt}
-    \color{\myThemeColor!80!black}\vrule width 1pt
+    \color{\cvThemeColor!80!black}\vrule width 1pt
     \hspace{5pt}
   }
   \newcommand{\mkRight}{
