@@ -19,6 +19,7 @@
 \RequirePackage{tikz}
 \RequirePackage{graphbox}
 \RequirePackage[default,opentype]{sourcesanspro}
+\RequirePackage{import}
 
 % Layout setup
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
@@ -53,6 +54,13 @@
 \newcommand*{\linkedin}[1]{\def\myLinkedin{#1}}
 \newcommand*{\github}[1]{\def\myGithub{#1}}
 
+\newcommand*{\skills}[1]{\def\cvSkills{#1}}
+\newcommand*{\projects}[1]{\def\cvProjects{#1}}
+\newcommand*{\contact}[1]{\def\cvContact{#1}}
+\newcommand*{\experience}[1]{\def\cvExperience{#1}}
+\newcommand*{\education}[1]{\def\cvEducation{#1}}
+
+
 \renewcommand*{\section}[2][L]{
   \ifthenelse{\equal{#1}{L}}{\RaggedLeft}{\RaggedRight}
   \sectionTitleStyle{#2}
@@ -69,15 +77,6 @@
 \newcommand*{\contactStyle}[1]{{\fontsize{8pt}{1em}\color{darkgray}\monoFont{#1}}}
 \newcommand*{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
-\newcommand*{\mkHeader}{
-    \begin{minipage}[t]{\linewidth}
-      \RaggedLeft{
-        \headerNameStyle{\myName}\\
-        \taglineStyle{\myTagline}
-      }
-    \end{minipage}
-    \vspace{1cm}
-}
 
 \newcommand*{\mkSection}[2]{
   \section[R]{#1}\vspace{-3pt}{#2}\vspace{10pt}
@@ -107,12 +106,13 @@
 % #4: date(s) of entry [Jan. 2019 - PRESENT]
 % #5: body
 \newcommand{\cvEntry}[5]{
-  \ifthenelse{\equal{#1}{}}{\vspace{-5pt}}{
+  \ifthenelse{\equal{#1}{}}{\vspace{-15pt}}{
     \subsectionTitleStyle{#1} \hfill \locationStyle{#2}\\
   }
   \vspace{3pt}
   \subsubsectionTitleStyle{#3} \hfill \datesStyle{#4}\\
   {#5}
+  \vspace{8pt}
 }
 
 % a list residing within a cvEntry
@@ -126,117 +126,39 @@
   }
 }
 
-\newcommand{\mkProjects}{
-  \mkSection{Projects}{
-    \cvEntry{Scrava}{}{\href{https://github.com/kiambogo/scrava}{\faGithubSquare \hspace{0.5mm} kiambogo/scrava}}{}{
-      \entryItems{
-        \item{Community recognized, open-source Scala client for the Strava API}
+% mkHeader will construct the header of the document
+% this includes the name and the tagline
+\newcommand*{\mkHeader}{
+    \begin{minipage}[t]{\linewidth}
+      \RaggedLeft{
+        \headerNameStyle{\myName}\\
+        \taglineStyle{\myTagline}
       }
-    }
-    \vspace{5pt}
-    \cvEntry{Road Quality}{}{\href{https://github.com/trifectalabs/roadquality}{\faGithubSquare \hspace{0.5mm} trifectalabs/roadquality}}{}{
-      \entryItems{
-        \item{Crowdsourced road quality and traffic safety data for cyclists}
-        \item{Allows cyclists to rate sections of a road or path to build a
-          cmmunity driven topology of the safest cycling routes}
-        \item{API and pathing logic implemented in Scala; custom mapping engine built with Rust}
-      }
-    }
+    \end{minipage}
+    \vspace{1cm}
+}
+
+\newcommand{\mkBody}{
+  \newcommand{\mkLeft}{
+    \begin{minipage}[t]{0.25\linewidth}
+      \mkSection{Skills}{{\cvSkills}}
+      \mkSection{Projects}{{\cvProjects}}
+      \mkSection{Contact}{{\cvContact}}
+    \end{minipage}
   }
-}
-
-\newcommand{\mkEducation}{
-  \mkSection{Education}{
-    \cvEntry{University of Waterloo}{Waterloo, Canada}{BASc. Computer Engineering}{2011-2016}{}{}
-  }
-}
-
-\newcommand{\mkContact}{
-  \mkSection{Contact}{
-    \contactItem{mailto:\myEmail}{\myEmail}{\faEnvelope}
-    \contactItem{https://\myWeb}{\myWeb}{\faHome}
-    \contactItem{https://www.linkedin.com/in/\myLinkedin}{\myLinkedin}{\faLinkedin}
-    \contactItem{https://github.com/\myGithub}{\myGithub}{\faGithub}
-  }
-}
-
-\newcommand{\mkSkills}{
-  \mkSection{Skills}{
-    \skillsItem{Scala}
-    \skillsItem{Go}
-    \skillsItem{Haskell}
-    \skillsItem{Java}
-    \skillsItem{AWS + Heroku}
-    \skillsItem{Postgres}
-    \skillsItem{Redis}
-    \skillsItem{Cassandra}
-    \skillsItem{MongoDB}
-  }
-}
-
-\newcommand{\mkLeft}[1][0.25]{
-  \begin{minipage}[t]{#1\linewidth}
-    {\mkSkills}
-    {\mkProjects}
-    {\mkContact}
-  \end{minipage}
-}
-
-\newcommand{\mkExperience}{
-  \mkSection{Experience}{
-    \cvEntry{MasonHub}{Los Angeles, CA (Remote)}{Software Engineer}{Jan. 2019 - Jan. 2021}{
-      \entryItems{
-        \item{Third engineer, responsible for designing, building, and owning multiple core systems that scaled the company from 0 clients to 35+ within 2 years}
-        \item{Constructed Shopify integration, reducing technical client onboarding time to minutes}
-        \item{Architected fault-tolerant, scalable printer management system allowing for custom supply chain documents. Successfully printed over 250,000+ documents}
-        \item{Refactored critical, production database schema reducing average inventory ledger query times to 2.5ms and bulk order processing time to 160ms}
-      }
-    }
-    \vspace{10pt}
-    \cvEntry{Hudson's Bay Company}{New York, NY (Remote)}{Lead Software Engineer}{Aug. 2018 - Jan. 2019}{
-      \entryItems{
-        \item {Engineering lead of a team of 4 intermediate and senior level developers}
-        \item {Directed team towards adopting a functional code base with Scala Cats + FS2}
-        \item {Architected a multi-service initiative to optimize safety stock levels and reduce order shorting}
-      }
-    }
-    \cvEntry{}{}{Software Engineer II}{Nov. 2017 - Aug. 2018}{
-      \entryItems{
-        \item {Conflated inventory management systems across banners as part of
-            the shared selling initiative, driving double-digit growth for the Gilt banner}
-      }
-    }
-    \cvEntry{}{}{Software Engineer}{July 2016 - Nov. 2017}{
-      \entryItems{
-        \item {Refactored mission critical service to use Postgres instead of Mongo; strategized deployment resulting in zero downtime}
-        \item {Modified website delivery window calculation to include customer location, improving checkout conversion across many US states}
-      }
-    }
-    \vspace{10pt}
-    \cvEntry{Strava}{San Francisco, CA}{Platform Engineer Intern}{Aug. 2015 - Dec. 2015}{
-      \entryItems{
-        \item{Optimized user characteristics processing with development of Scala service leveraging Spark}
-        \item{Designed and deployed Spark cluster to production atop of Apache Mesos}
-      }
-    }
-    \vspace{10pt}
-    \cvEntry{Gilt Groupe}{New York, NY}{Software Engineering Intern}{Jan. 2015 - Apr. 2015}{
-      \entryItems{
-        \item {Designed and built a public API with Scala + Play as part of the global redistribution team to provide inventory and catalog information to redistribution partners, increasing global incremental revenue by more than 40\%}
-      }
-    }
-  }
-}
-
-\newcommand{\mkRight}[1][0.75]{
-  \begin{minipage}[t]{#1\linewidth}
-    {\mkExperience}
-    {\mkEducation}
-  \end{minipage}
-}
-
-\newcommand{\mkSplit}{
+  \newcommand{\mkSplit}{
     \hspace{5pt}
     \color{\myThemeColor!80!black}\vrule width 1pt
     \hspace{5pt}
+  }
+  \newcommand{\mkRight}{
+    \begin{minipage}[t]{0.75\linewidth}
+      \mkSection{Experience}{{\cvExperience}}
+      \mkSection{Education}{{\cvEducation}}
+    \end{minipage}
+  }
+
+  {\mkLeft}
+  {\mkSplit}
+  {\mkRight}
 }
