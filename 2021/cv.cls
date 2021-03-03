@@ -60,13 +60,6 @@
 \newcommand*{\experience}[1]{\def\cvExperience{#1}}
 \newcommand*{\education}[1]{\def\cvEducation{#1}}
 
-
-\renewcommand*{\section}[2][L]{
-  \ifthenelse{\equal{#1}{L}}{\RaggedLeft}{\RaggedRight}
-  \sectionTitleStyle{#2}
-  \vspace{-5pt}\\{\hrulefill}\vspace{10pt}\\
-}
-
 \newcommand*{\headerNameStyle}[1]{{\color{darkgray}\fontsize{28pt}{1em}\MakeUppercase{\nameFont{#1}}}}
 \newcommand*{\taglineStyle}[1]{{\color{\myThemeColor!75}\fontsize{8pt}{1em}\MakeUppercase{\bodyfont{#1}}}}
 \newcommand*{\sectionTitleStyle}[1]{{\color{\myThemeColor}\fontsize{10pt}{1em}\MakeUppercase{\sectionTitleFont{#1}}}}
@@ -78,10 +71,26 @@
 \newcommand*{\bodyStyle}[1]{{\small\color{darkgray}{#1}}}
 
 
+% a section within the cv (skills/education/experience/etc)
+% args:
+% #1: section title [skills]
+% #2: section content
 \newcommand*{\mkSection}[2]{
-  \section[R]{#1}\vspace{-3pt}{#2}\vspace{10pt}
+  \RaggedRight{
+    \sectionTitleStyle{#1}
+    \vspace{-5pt}\\
+    {\hrulefill}
+    \vspace{7pt}\\
+    {#2}
+    \vspace{7pt}
+  }
 }
 
+% an entry within the contact section
+% args:
+% #1: URL to hyperlink to
+% #2: value to display
+% #3: icon (font awesome) to include
 \newcommand*{\contactItem}[3]{
   \hspace{-11pt}
   \contactStyle{
@@ -94,6 +103,9 @@
   }\\
 }
 
+% an entry within the skills section
+% args:
+% #1: skill to list [scala]
 \newcommand*{\skillsItem}[1]{
   \bodyStyle{#1}\vspace{5pt}\\
 }
@@ -135,9 +147,11 @@
         \taglineStyle{\myTagline}
       }
     \end{minipage}
-    \vspace{1cm}
+    \vspace{30pt}
 }
 
+% mkBody constructs the body of the cv
+% this includes the left side, split, and right side
 \newcommand{\mkBody}{
   \newcommand{\mkLeft}{
     \begin{minipage}[t]{0.25\linewidth}
