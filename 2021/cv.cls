@@ -46,7 +46,7 @@
 \newcommand*{\web}[1]{\def\cvWeb{#1}}
 \newcommand*{\linkedin}[1]{\def\cvLinkedin{#1}}
 \newcommand*{\github}[1]{\def\cvGithub{#1}}
-\newcommand*{\skills}[1]{\def\cvSkills{#1}}
+\newcommand*{\skills}[1]{\def\cvSkills{#1\vspace{8pt}}}
 \newcommand*{\projects}[1]{\def\cvProjects{#1}}
 \newcommand*{\contact}[1]{\def\cvContact{#1}}
 \newcommand*{\experience}[1]{\def\cvExperience{#1}}
@@ -104,19 +104,24 @@
 
 % an entry within a section
 % args:
-% #1: optional title (leave blank for nesting entries) [company A]
+% #1: title [company A]
 % #2: location [vancouver]
-% #3: subtitle [software engineer]
-% #4: date(s) of entry [Jan. 2019 - PRESENT]
-% #5: body
-\newcommand{\cvEntry}[5]{
-  \ifthenelse{\equal{#1}{}}{\vspace{-15pt}}{
-    \subsectionTitleStyle{#1} \hfill \locationStyle{#2}\\
-  }
-  \vspace{3pt}
-  \subsubsectionTitleStyle{#3} \hfill \datesStyle{#4}\\
-  {#5}
+% #3: cvSubEntries
+\newcommand{\cvEntry}[3]{
+  \subsectionTitleStyle{#1} \hfill \locationStyle{#2}\\
+  {#3}
   \vspace{8pt}
+}
+
+% an subentry within a section
+% args:
+% #1: subtitle [software engineer]
+% #2: date(s) of entry [Jan. 2019 - PRESENT]
+% #3: body
+\newcommand{\cvSubEntry}[3]{
+  \vspace{3pt}
+  \subsubsectionTitleStyle{#1} \hfill \datesStyle{#2}\\
+  {#3}
 }
 
 % a list residing within a cvEntry
