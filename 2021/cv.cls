@@ -49,6 +49,7 @@
 \newcommand*{\skills}[1]{\def\cvSkills{#1\vspace{8pt}}}
 \newcommand*{\projects}[1]{\def\cvProjects{#1}}
 \newcommand*{\contact}[1]{\def\cvContact{#1}}
+\newcommand{\about}[1]{\def\cvAbout{#1\vspace{8pt}\\}}
 \newcommand*{\experience}[1]{\def\cvExperience{#1}}
 \newcommand*{\education}[1]{\def\cvEducation{#1}}
 
@@ -172,6 +173,7 @@
   }
   \newcommand{\mkRight}{
     \begin{minipage}[t]{0.75\linewidth}
+      \ifthenelse{\equal{\cvAbout}{}}{}{\mkSection{About}{{\bodyStyle{\cvAbout}}}}
       \mkSection{Experience}{{\cvExperience}}
       \mkSection{Education}{{\cvEducation}}
     \end{minipage}
