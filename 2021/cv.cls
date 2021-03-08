@@ -153,7 +153,7 @@
         \taglineStyle{\cvTagline}
       }
     \end{minipage}
-    \vspace{25pt}
+    \vspace{20pt}
 }
 
 % mkBody constructs the body of the cv
