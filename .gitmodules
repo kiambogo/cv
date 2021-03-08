@@ -1,0 +1,3 @@
+[submodule "soft-cv"]
+	path = soft-cv
+	url = git@github.com:kiambogo/soft-cv.git
