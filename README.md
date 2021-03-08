@@ -1,5 +1,5 @@
 # CV 
 
-my personal resume, typeset with LaTeX
+my personal resume, typeset with LaTeX and [soft-cv](https://github.com/kiambogo/soft-cv) template.
 
-<img src="2021/cv.png" width="600">
+<img src="cv.png" width="600">
